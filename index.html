@@ -4,21 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Primary Meta Tags -->
+  <!-- Meta -->
   <title>Gleam — Beginner-Friendly AI Game Builder</title>
-  <!-- Favicon -->
-<link rel="icon" type="image/png" href="Screenshot 2026-01-28 160613.png">
-
+  <link rel="icon" type="image/png" href="Screenshot 2026-01-28 160613.png">
   <meta name="title" content="Gleam — Beginner-Friendly AI Game Builder">
   <meta name="description" content="Want to make a game but don't know how to code? Try Gleam, a beginner-friendly AI game builder you can use directly in your browser. Create games fast, no coding required.">
-
-  <!-- Keywords -->
   <meta name="keywords" content="AI game builder, no code game maker, beginner game development, browser game creator, make games without coding, Gleam AI">
-
-  <!-- Author -->
   <meta name="author" content="Gleam">
-
-  <!-- Open Graph / Social Media -->
+  
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Gleam — Make Games Without Coding">
   <meta property="og:description" content="Want to make a game but don't know how to code? Gleam is a beginner-friendly AI game builder you can open right in your browser.">
@@ -30,21 +24,102 @@
   <meta name="twitter:description" content="Create games with AI. No coding needed. Open Gleam in your browser and start building today.">
 
   <style>
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-      background-color: #000; /* optional background color */
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #000;
+    }
+    nav {
+      background-color: #007BFF; /* blue theme */
+      display: flex;
+      justify-content: space-around;
+      padding: 15px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 4px;
+    }
+    nav a.active, nav a:hover {
+      background-color: #0056b3;
+    }
+    .tab-content {
+      padding: 100px 20px 20px 20px; /* top padding to avoid navbar overlap */
     }
     iframe {
-      border: none;
       width: 100%;
-      height: 100%;
+      height: 80vh;
+      border: none;
+    }
+    h1 {
+      color: #007BFF;
+    }
+    button {
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
-  <iframe src="https://www.cocrea.world/@keyboardshift/Gleam" allowfullscreen></iframe>
+  <!-- Navigation -->
+  <nav>
+    <a href="#" class="active" onclick="showTab('home')">Home</a>
+    <a href="#" onclick="showTab('help')">Help</a>
+    <a href="#" onclick="showTab('create')">Create</a>
+  </nav>
+
+  <!-- Tab Contents -->
+  <div class="tab-content" id="home">
+    <h1>Welcome to Gleam AI</h1>
+    <p>Gleam is a beginner-friendly AI game builder. You can generate games directly in your browser, no coding required. Perfect for anyone who wants to create and play their own games instantly!</p>
+    <p>Click on the "Create" tab to start building your game now!</p>
+  </div>
+
+  <div class="tab-content" id="help" style="display:none;">
+    <h1>Help</h1>
+    <h2>How to use Gleam</h2>
+    <ol>
+      <li>Go to the "Create" tab.</li>
+      <li>Generate a new game using the AI builder.</li>
+      <li>Play and test your game instantly in your browser.</li>
+      <li>Share your creation with friends!</li>
+    </ol>
+    <h2>Tips</h2>
+    <ul>
+      <li>Start small — simple games are easier to iterate.</li>
+      <li>Experiment with different AI prompts for unique gameplay.</li>
+      <li>Check your game in multiple browsers for compatibility.</li>
+    </ul>
+  </div>
+
+  <div class="tab-content" id="create" style="display:none;">
+    <h1>Create Your Game</h1>
+    <iframe src="https://www.cocrea.world/@keyboardshift/Gleam" allowfullscreen></iframe>
+  </div>
+
+  <script>
+    function showTab(tabId) {
+      const tabs = ['home', 'help', 'create'];
+      tabs.forEach(id => {
+        document.getElementById(id).style.display = (id === tabId) ? 'block' : 'none';
+      });
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+      document.querySelector(`nav a[onclick*="${tabId}"]`).classList.add('active');
+    }
+  </script>
 </body>
 </html>
