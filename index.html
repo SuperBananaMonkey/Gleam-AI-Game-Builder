@@ -1,93 +1,47 @@
-
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gleam AI Game Builder</title>
+
   <!-- Primary Meta Tags -->
-<meta name="title" content="Gleam — Beginner-Friendly AI Game Builder">
-<meta name="description" content="Want to make a game but don't know how to code? Try Gleam, a beginner-friendly AI game builder you can use directly in your browser. Create games fast, no coding required.">
+  <title>Gleam — Beginner-Friendly AI Game Builder</title>
+  <meta name="title" content="Gleam — Beginner-Friendly AI Game Builder">
+  <meta name="description" content="Want to make a game but don't know how to code? Try Gleam, a beginner-friendly AI game builder you can use directly in your browser. Create games fast, no coding required.">
 
-<!-- Keywords (optional, still useful for some engines) -->
-<meta name="keywords" content="AI game builder, no code game maker, beginner game development, browser game creator, make games without coding, Gleam AI">
+  <!-- Keywords -->
+  <meta name="keywords" content="AI game builder, no code game maker, beginner game development, browser game creator, make games without coding, Gleam AI">
 
-<!-- Author -->
-<meta name="author" content="Gleam">
+  <!-- Author -->
+  <meta name="author" content="Gleam">
 
-<!-- Open Graph / Social Media -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="Gleam — Make Games Without Coding">
-<meta property="og:description" content="Want to make a game but don't know how to code? Gleam is a beginner-friendly AI game builder you can open right in your browser.">
-<meta property="og:site_name" content="Gleam">
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Gleam — Make Games Without Coding">
+  <meta property="og:description" content="Want to make a game but don't know how to code? Gleam is a beginner-friendly AI game builder you can open right in your browser.">
+  <meta property="og:site_name" content="Gleam">
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Gleam — Beginner-Friendly AI Game Builder">
-<meta name="twitter:description" content="Create games with AI. No coding needed. Open Gleam in your browser and start building today.">
-
-<!-- Viewport -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gleam — Beginner-Friendly AI Game Builder">
+  <meta name="twitter:description" content="Create games with AI. No coding needed. Open Gleam in your browser and start building today.">
 
   <style>
-    html,
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      width: 100%;
       height: 100%;
-      background-color: transparent;
+      overflow: hidden;
+      background-color: #000; /* optional background color */
     }
-
-    #iframe-cocrea::-webkit-full-screen {
+    iframe {
+      border: none;
       width: 100%;
       height: 100%;
     }
   </style>
 </head>
-
 <body>
-  <iframe id="iframe-cocrea" width="800px" height="405px" src="https://cocrea.world/embed/2016519233744244737?type=player&showCreator=true&showOperating=false" title="Gleam AI Game Builder/Scratch project hosted on Cocrea." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+  <iframe src="https://www.cocrea.world/@keyboardshift/Gleam" allowfullscreen></iframe>
 </body>
-
-<script>
-  function handleFullScreen() {
-    var el = document.getElementById("iframe-cocrea");
-    var requestMethod = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen;
-    if (requestMethod) {
-      requestMethod.call(el);
-    } else if (typeof window.ActiveXObject !== "undefined") {
-      var wscript = new ActiveXObject("WScript.Shell");
-      if (wscript !== null) {
-        wscript.SendKeys("{F11}");
-      }
-    }
-  }
-
-  function handleExitFullScreen() {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
-    } else if (document.mozCancelFullScreen) {
-      document.mozCancelFullScreen();
-    } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-    }
-  }
-
-  window.addEventListener('message', e => {
-    if (e.origin === "https://cocrea.world") {
-      if (e.data === 'fullScreen') {
-        handleFullScreen();
-      } else if (e.data === 'normal') {
-        handleExitFullScreen();
-      }
-    }
-  }, false);
-</script>
-
 </html>
-  
