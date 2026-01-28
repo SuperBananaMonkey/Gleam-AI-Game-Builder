@@ -33,26 +33,33 @@
     nav {
       background-color: #007BFF; /* blue theme */
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
+      padding: 10px 0;
       position: fixed;
       width: 100%;
       top: 0;
       z-index: 1000;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
+    .navbar-top {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 50px;
+    }
     .logo {
       font-weight: bold;
       font-size: 24px;
       color: white;
       text-decoration: none;
+      margin-right: 50px;
     }
     .nav-links a {
       color: white;
       text-decoration: none;
       font-weight: bold;
-      margin-left: 20px;
       padding: 8px 12px;
       border-radius: 4px;
     }
@@ -60,42 +67,51 @@
       background-color: #0056b3;
     }
     .tab-content {
-      padding: 120px 20px 20px 20px; /* extra top padding for navbar */
+      padding: 140px 20px 20px 20px; /* extra top padding for navbar */
       max-width: 1000px;
       margin: auto;
     }
     iframe {
       width: 100%;
-      height: 80vh;
+      height: 70vh;
       border: none;
     }
     h1, h2 {
       color: #007BFF;
     }
-    button {
-      background-color: #007BFF;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
     section {
       margin-bottom: 40px;
+    }
+    .cta-button {
+      display: inline-block;
+      background-color: #007BFF;
+      color: #fff;
+      font-size: 24px;
+      padding: 20px 40px;
+      border-radius: 10px;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    .cta-button:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
   <!-- Navigation -->
   <nav>
-    <a href="#" class="logo" onclick="showTab('home')">Gleam</a>
-    <div class="nav-links">
-      <a href="#" class="active" onclick="showTab('home')">Home</a>
-      <a href="#" onclick="showTab('help')">Help</a>
-      <a href="#" onclick="showTab('create')">Create</a>
+    <div class="navbar-top">
+      <a href="#" class="logo" onclick="showTab('home')">Gleam</a>
+      <div class="nav-links">
+        <a href="#" class="active" onclick="showTab('home')">Home</a>
+        <a href="#" onclick="showTab('help')">Help</a>
+        <a href="#" onclick="showTab('create')">Create</a>
+        <a href="#" onclick="showTab('updates')">Updates</a>
+        <a href="#" onclick="showTab('community')">Community</a>
+        <a href="#" onclick="showTab('about')">About</a>
+      </div>
     </div>
   </nav>
 
@@ -104,7 +120,7 @@
     <section>
       <h1>Welcome to Gleam AI</h1>
       <p>Gleam is a beginner-friendly AI game builder. You can generate games directly in your browser, no coding required. Perfect for anyone who wants to create and play their own games instantly!</p>
-      <p>Click on the "Create" tab to start building your game now!</p>
+      <a href="#" class="cta-button" onclick="showTab('create')">Start Creating Your Game</a>
     </section>
 
     <section>
@@ -156,15 +172,40 @@
     </section>
   </div>
 
+  <div class="tab-content" id="updates" style="display:none;">
+    <section>
+      <h1>Updates</h1>
+      <p>We release new AI templates and features regularly. Stay tuned!</p>
+      <ul>
+        <li>New AI-powered game templates added every week.</li>
+        <li>Improved export options for custom projects.</li>
+        <li>Bug fixes and performance improvements.</li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="tab-content" id="community" style="display:none;">
+    <section>
+      <h1>Community</h1>
+      <p>Join the Gleam community to share your creations, get feedback, and discover new AI-generated games from other users.</p>
+    </section>
+  </div>
+
+  <div class="tab-content" id="about" style="display:none;">
+    <section>
+      <h1>About Gleam</h1>
+      <p>Gleam is designed to make AI game creation fun and accessible. Whether you're a beginner or an experienced developer, Gleam helps you turn ideas into playable games in minutes.</p>
+    </section>
+  </div>
+
   <script>
     function showTab(tabId) {
-      const tabs = ['home', 'help', 'create'];
+      const tabs = ['home', 'help', 'create', 'updates', 'community', 'about'];
       tabs.forEach(id => {
         document.getElementById(id).style.display = (id === tabId) ? 'block' : 'none';
       });
-      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-      // highlight clicked tab
-      const activeLink = Array.from(document.querySelectorAll('nav a')).find(a => a.getAttribute('onclick').includes(tabId));
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+      const activeLink = Array.from(document.querySelectorAll('.nav-links a')).find(a => a.getAttribute('onclick').includes(tabId));
       if(activeLink) activeLink.classList.add('active');
     }
   </script>
